@@ -117,7 +117,7 @@ public class Utility {
             sb.append(auxArea.charAt(i));
             if (n == cada) {
                 n = 0;
-                while (n <= cantidad) {
+                while (n < cantidad) {
                     sb.append(" ");
                     n++;
                 }
