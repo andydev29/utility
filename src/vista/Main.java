@@ -5,11 +5,12 @@
  */
 package vista;
 
-import java.util.Iterator;
+import java.awt.Image;
 import javax.swing.ButtonModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import utility.Utility;
-
 
 /**
  *
@@ -22,6 +23,11 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+
+        this.setLocationRelativeTo(null);
+        ImageIcon imagen = new ImageIcon(getClass().getResource("/recursos/fondo.jpg"));
+        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), Image.SCALE_DEFAULT));
+        jLabel5.setIcon(icono);
     }
 
     /**
@@ -44,7 +50,6 @@ public class Main extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cada = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         resolver = new javax.swing.JButton();
         copyClip = new javax.swing.JButton();
         pasteClip = new javax.swing.JButton();
@@ -53,45 +58,56 @@ public class Main extends javax.swing.JFrame {
         area1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         area2 = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(preferredSize());
         setMinimumSize(preferredSize());
         setPreferredSize(new java.awt.Dimension(1055, 710));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        label1.setFont(new java.awt.Font("MV Boli", 2, 36)); // NOI18N
+        label1.setAlignment(java.awt.Label.CENTER);
+        label1.setBackground(new java.awt.Color(255, 255, 255));
+        label1.setFont(new java.awt.Font("MV Boli", 3, 48)); // NOI18N
         label1.setText("Utility");
-        getContentPane().add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, -1, 50));
+        getContentPane().add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1055, 80));
         label1.getAccessibleContext().setAccessibleDescription("name");
 
+        Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         grupoRadio.add(añadirEspacio);
+        añadirEspacio.setForeground(new java.awt.Color(0, 0, 0));
         añadirEspacio.setText("Añadir Espacios");
         añadirEspacio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 añadirEspacioActionPerformed(evt);
             }
         });
-        Panel.add(añadirEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        Panel.add(añadirEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 48, -1, 30));
 
         grupoRadio.add(quitarEspacio);
+        quitarEspacio.setForeground(new java.awt.Color(0, 0, 0));
         quitarEspacio.setText("Quitar Espacios");
         quitarEspacio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quitarEspacioActionPerformed(evt);
             }
         });
-        Panel.add(quitarEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        Panel.add(quitarEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 88, -1, 30));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Seleccione:");
-        Panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+        Panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 20));
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cantidad");
-        Panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
+        Panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 58, -1, -1));
 
         cantidad.setToolTipText("");
         cantidad.setEnabled(false);
@@ -105,10 +121,11 @@ public class Main extends javax.swing.JFrame {
                 cantidadKeyTyped(evt);
             }
         });
-        Panel.add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 74, 32));
+        Panel.add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 80, 30));
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cada ");
-        Panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, -1, -1));
+        Panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 58, -1, -1));
 
         cada.setEnabled(false);
         cada.addActionListener(new java.awt.event.ActionListener() {
@@ -121,61 +138,98 @@ public class Main extends javax.swing.JFrame {
                 cadaKeyTyped(evt);
             }
         });
-        Panel.add(cada, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 79, 32));
+        Panel.add(cada, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 80, 30));
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Caracteres");
-        Panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
-        Panel.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 13, -1, 95));
+        Panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 58, -1, -1));
 
+        resolver.setBackground(new java.awt.Color(255, 255, 255));
+        resolver.setForeground(new java.awt.Color(0, 0, 0));
+        resolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/resolver.png"))); // NOI18N
         resolver.setText("Resolver");
+        resolver.setBorder(null);
+        resolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        resolver.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        resolver.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         resolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resolverActionPerformed(evt);
             }
         });
-        Panel.add(resolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, -1, 80));
+        Panel.add(resolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 90, 80));
 
+        copyClip.setBackground(new java.awt.Color(255, 255, 255));
+        copyClip.setForeground(new java.awt.Color(0, 0, 0));
+        copyClip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/copiar.png"))); // NOI18N
         copyClip.setText("Copiar");
+        copyClip.setBorder(null);
+        copyClip.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        copyClip.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        copyClip.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         copyClip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 copyClipActionPerformed(evt);
             }
         });
-        Panel.add(copyClip, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 80, 40));
+        Panel.add(copyClip, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 90, 60));
 
+        pasteClip.setBackground(new java.awt.Color(255, 255, 255));
+        pasteClip.setForeground(new java.awt.Color(0, 0, 0));
+        pasteClip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/pegar.png"))); // NOI18N
         pasteClip.setText("Pegar ");
+        pasteClip.setBorder(null);
+        pasteClip.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pasteClip.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        pasteClip.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         pasteClip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pasteClipActionPerformed(evt);
             }
         });
-        Panel.add(pasteClip, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 80, 40));
+        Panel.add(pasteClip, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 90, 60));
 
+        limpiar.setBackground(new java.awt.Color(255, 255, 255));
+        limpiar.setForeground(new java.awt.Color(0, 0, 0));
+        limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/limpiar.png"))); // NOI18N
         limpiar.setText("Limpiar");
+        limpiar.setBorder(null);
+        limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limpiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        limpiar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limpiarActionPerformed(evt);
             }
         });
-        Panel.add(limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, 80, 50));
+        Panel.add(limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 90, 60));
 
-        getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 860, 130));
+        getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 870, 140));
 
         area1.setColumns(20);
         area1.setLineWrap(true);
         area1.setRows(5);
         area1.setToolTipText("");
+        area1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(area1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 975, 195));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 975, 195));
 
         area2.setEditable(false);
         area2.setColumns(20);
         area2.setLineWrap(true);
         area2.setRows(5);
+        area2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane2.setViewportView(area2);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 973, 200));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 973, 200));
+
+        jLabel5.setToolTipText("");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 1000, 610));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setOpaque(true);
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -204,22 +258,22 @@ public class Main extends javax.swing.JFrame {
 
     private void resolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resolverActionPerformed
         // TODO add your handling code here:
-        if (!area1.getText().equals("")) {            
+        if (!area1.getText().equals("")) {
             if (grupoRadio.getSelection() != null) {
                 ButtonModel radio = grupoRadio.getSelection();
                 if (añadirEspacio.isSelected()) {
                     if (!cantidad.getText().equals("") && !cada.getText().equals("")) {
-                        if(Integer.parseInt(cada.getText()) < area1.getText().length()){
+                        if (Integer.parseInt(cada.getText()) < area1.getText().length()) {
                             String cant, cad;
                             cant = cantidad.getText();
                             cad = cada.getText();
-                            area2.setText(Utility.spaces(area1.getText(), Integer.parseInt(cant), Integer.parseInt(cad)));                            
+                            area2.setText(Utility.spaces(area1.getText(), Integer.parseInt(cant), Integer.parseInt(cad)));
                         } else {
                             JOptionPane.showMessageDialog(null, "La longitud de 'cada' no puede superar la longitud"
-                                    + " del texto principal", "ERROR", JOptionPane.ERROR_MESSAGE);    
+                                    + " del texto principal", "ERROR", JOptionPane.ERROR_MESSAGE);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "No ingresó 'cantidad' y 'cada' cuantos caracteres", 
+                        JOptionPane.showMessageDialog(null, "No ingresó 'cantidad' y 'cada' cuantos caracteres",
                                 "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
                     }
                 } else {
@@ -325,12 +379,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField cada;
     private javax.swing.JTextField cantidad;
     private javax.swing.JButton copyClip;
-    private javax.swing.Box.Filler filler1;
     private javax.swing.ButtonGroup grupoRadio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Label label1;
